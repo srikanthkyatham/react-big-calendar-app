@@ -1,0 +1,92 @@
+diff --git a/node_modules/react-big-calendar/dist/react-big-calendar.esm.js b/node_modules/react-big-calendar/dist/react-big-calendar.esm.js
+index 1369876..903b181 100644
+--- a/node_modules/react-big-calendar/dist/react-big-calendar.esm.js
++++ b/node_modules/react-big-calendar/dist/react-big-calendar.esm.js
+@@ -2839,7 +2839,7 @@ function TimeGridEvent(props) {
+     top = style.top,
+     width = style.width,
+     xOffset = style.xOffset;
+-  var inner = [/*#__PURE__*/React.createElement("div", {
++  var inner0 = [/*#__PURE__*/React.createElement("div", {
+     key: "1",
+     className: "rbc-event-label"
+   }, label), /*#__PURE__*/React.createElement("div", {
+@@ -2849,6 +2849,17 @@ function TimeGridEvent(props) {
+     event: event,
+     title: title
+   }) : title)];
++
++    console.log("sriky custom inner");
++
++  var inner = [/*#__PURE__*/React.createElement("div", {
++    key: "2",
++    className: "rbc-event-content"
++  }, Event ? /*#__PURE__*/React.createElement(Event, {
++    event: event,
++    title: title
++  }) : title)];
++
+   var eventStyle = isBackgroundEvent ? _objectSpread(_objectSpread({}, userProps.style), {}, _defineProperty({
+     top: stringifyPercent(top),
+     height: stringifyPercent(height),
+diff --git a/node_modules/react-big-calendar/dist/react-big-calendar.js b/node_modules/react-big-calendar/dist/react-big-calendar.js
+index 34635d4..109eb92 100644
+--- a/node_modules/react-big-calendar/dist/react-big-calendar.js
++++ b/node_modules/react-big-calendar/dist/react-big-calendar.js
+@@ -41906,7 +41906,7 @@
+       top = style.top,
+       width = style.width,
+       xOffset = style.xOffset;
+-    var inner = [/*#__PURE__*/React.createElement("div", {
++    var inner0 = [/*#__PURE__*/React.createElement("div", {
+       key: "1",
+       className: "rbc-event-label"
+     }, label), /*#__PURE__*/React.createElement("div", {
+@@ -41916,6 +41916,17 @@
+       event: event,
+       title: title
+     }) : title)];
++
++    console.log("sriky: using custom innner")
++
++    var inner = [/*#__PURE__*/_react.default.createElement("div", {
++      key: "2",
++      className: "rbc-event-content"
++    }, Event ? /*#__PURE__*/_react.default.createElement(Event, {
++      event: event,
++      title: title
++    }) : title)];
++  
+     var eventStyle = isBackgroundEvent ? _objectSpread2(_objectSpread2({}, userProps.style), {}, _defineProperty$1({
+       top: stringifyPercent(top),
+       height: stringifyPercent(height),
+diff --git a/node_modules/react-big-calendar/lib/TimeGridEvent.js b/node_modules/react-big-calendar/lib/TimeGridEvent.js
+index fded824..8e81d93 100644
+--- a/node_modules/react-big-calendar/lib/TimeGridEvent.js
++++ b/node_modules/react-big-calendar/lib/TimeGridEvent.js
+@@ -41,7 +41,7 @@ function TimeGridEvent(props) {
+     top = style.top,
+     width = style.width,
+     xOffset = style.xOffset;
+-  var inner = [/*#__PURE__*/_react.default.createElement("div", {
++  var inner0 = [/*#__PURE__*/_react.default.createElement("div", {
+     key: "1",
+     className: "rbc-event-label"
+   }, label), /*#__PURE__*/_react.default.createElement("div", {
+@@ -51,6 +51,16 @@ function TimeGridEvent(props) {
+     event: event,
+     title: title
+   }) : title)];
++  console.log("using user defined inner")
++  var inner = [/*#__PURE__*/_react.default.createElement("div", {
++    key: "2",
++    className: "rbc-event-content"
++  }, Event ? /*#__PURE__*/_react.default.createElement(Event, {
++    event: event,
++    title: title
++  }) : title)];
++
++
+   var eventStyle = isBackgroundEvent ? (0, _objectSpread4.default)((0, _objectSpread4.default)({}, userProps.style), {}, (0, _defineProperty2.default)({
+     top: stringifyPercent(top),
+     height: stringifyPercent(height),
