@@ -4,12 +4,17 @@
   margin-left: 0px;
 }
 
+.rbc-day-slot .rbc-events-container {
+  margin-right: 0px;
+}
+
 .rectangle {
   display: flex;
   background: rgb(255, 255, 255);
   border: 1px solid rgb(220, 220, 220);
   border-radius: 4px;
   color: black;
+  padding: 0px;
 }
 
 .rectangle_side_bar {
