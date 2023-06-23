@@ -1,0 +1,24 @@
+@import 'react-big-calendar/lib/sass/styles';
+
+.rbc-day-slot .rbc-events-calendar {
+  margin-left: 0px;
+}
+
+.rectangle {
+  display: flex;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 4px;
+}
+
+.rectangle_side_bar {
+  width: 3px;
+  background: rgb(220, 220, 220);
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 2px 0px 0px 2px;
+}
+
+.rectangle_content {
+  padding-left: 10px;
+  width: 100%
+}

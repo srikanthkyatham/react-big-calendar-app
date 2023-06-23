@@ -11,6 +11,7 @@
     "@types/react": "^17.0.62",
     "@types/react-big-calendar": "^1.6.4",
     "@types/react-dom": "^17.0.20",
+    "moment": "^2.29.4",
     "react": "^17.0.2",
     "react-big-calendar": "^1.8.1",
     "react-dom": "^17.0.2",
@@ -22,7 +23,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "scss2css": "npx sass --watch src/bigcalendar.scss  src/bigcalendar.css -I node_modules"
   },
   "eslintConfig": {
     "extends": [
