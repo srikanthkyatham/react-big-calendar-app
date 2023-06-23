@@ -22,6 +22,9 @@ export const Calendar = (props: any) => {
   const { components, defaultDate, views } = useMemo(() => {
     return {
       components: {
+        // event
+        // eventWrapper
+        // eventContainerWrapper
         /*eventWrapper: (eventWrapperProps: any) => {
           //return <EventComponent {...eventWrapperProps.event} />;
           return <div />;
@@ -48,6 +51,13 @@ export const Calendar = (props: any) => {
       step={60}
       views={views}
       showAllEvents={true}
+      eventPropGetter={(event, start, end, isSelected) => {
+        console.log("eventPropGetter ", { event });
+        return {
+          style: {},
+          className: "rectangle",
+        };
+      }}
     />
   );
 };
