@@ -1,3 +1,5 @@
+import { getHours } from "date-fns";
+import parse from "date-fns/parse";
 import { useMemo } from "react";
 import {
   Calendar as BigCalendar,
@@ -39,7 +41,16 @@ const formats: Formats = {
   },
 };
 
+const dateString = "Fri Jun 23 2023 18:30:00 GMT+0300";
+const date = parse(dateString, "MM/dd/yyyy", new Date());
+console.log("parsed date", date);
+
 const today = new Date(2023, 5, 22, 0, 0, 0, 0);
+
+const parseDateString = (dateString: string) => {
+  const parsed = Date.parse(dateString);
+  return new Date(parsed);
+};
 
 interface MyEventProps {
   event: any;
@@ -61,6 +72,15 @@ export const Calendar = (props: any) => {
         // eventContainerWrapper
         eventWrapper: (eventWrapperProps: any) => {
           return <div>{eventWrapperProps.children} </div>;
+        },
+        timeSlotWrapper: (timeSlotWrapperProps: any) => {
+          // only for the time showing column, the very first column
+          //console.log("timeSlotWrapperProps ", { timeSlotWrapperProps });
+          const date = parseDateString(timeSlotWrapperProps.value);
+          const hours = getHours(date);
+          if (hours < 8 || hours > 22) return null;
+
+          return <div>{timeSlotWrapperProps.children}</div>;
         },
       },
       defaultDate: today,
