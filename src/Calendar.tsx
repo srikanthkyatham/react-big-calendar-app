@@ -11,8 +11,15 @@ import "./bigcalendar.css";
 const events = [
   {
     title: "event1",
-    start: new Date(2023, 5, 22, 21, 0, 0, 0),
-    end: new Date(2023, 5, 22, 22, 0, 0, 0),
+    start: new Date(2023, 5, 22, 20, 0, 0, 0),
+    end: new Date(2023, 5, 22, 23, 0, 0, 0),
+    allDay: false,
+  },
+
+  {
+    title: "event2",
+    start: new Date(2023, 5, 22, 19, 0, 0, 0),
+    end: new Date(2023, 5, 22, 21, 0, 0, 0),
     allDay: false,
   },
 ];
@@ -64,14 +71,14 @@ export const Calendar = (props: any) => {
       defaultDate={defaultDate}
       events={events}
       localizer={mLocalizer}
-      step={60}
+      step={30}
       views={views}
       showAllEvents={true}
       eventPropGetter={(event, start, end, isSelected) => {
         console.log("eventPropGetter ", { event });
         return {
           style: {},
-          className: "rectangle",
+          className: "",
         };
       }}
     />

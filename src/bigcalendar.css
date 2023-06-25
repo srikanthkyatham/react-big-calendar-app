@@ -667,20 +667,30 @@ button.rbc-input::-moz-focus-inner {
   margin-right: 0px;
 }
 
+.rbc-event, .rbc-day-slot .rbc-background-event {
+  padding: 0px;
+  padding-left: 6px;
+  background-color: transparent;
+}
+
+.rbc-day-slot .rbc-event, .rbc-day-slot .rbc-background-event {
+  border: 0px;
+}
+
 .rectangle {
   display: flex;
-  background: rgb(255, 255, 255);
-  border: 1px solid rgb(220, 220, 220);
+  background: rgb(255, 241, 233);
   border-radius: 4px;
+  border: 1px solid rgb(238, 90, 0);
   color: black;
   padding: 0px;
+  height: 100%;
 }
 
 .rectangle_side_bar {
   width: 3px;
-  background: rgb(220, 220, 220);
-  border: 1px solid rgb(220, 220, 220);
-  border-radius: 2px 0px 0px 2px;
+  background: rgb(238, 90, 0);
+  border-radius: 4px 0px 0px 4px;
 }
 
 .rectangle_content {
