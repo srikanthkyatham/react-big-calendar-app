@@ -1,12 +1,29 @@
-import moment from "moment";
 import { useMemo } from "react";
-import {
-  Calendar as BigCalendar,
-  Views,
-  momentLocalizer,
-} from "react-big-calendar";
+import { Calendar as BigCalendar, Formats, Views } from "react-big-calendar";
 import EventComponent from "./EventComponent";
 import "./bigcalendar.css";
+import { localizer } from "./localizer1";
+require("globalize/lib/cultures/globalize.culture.fi");
+
+//printFormats();
+
+const cultures = ["fi"];
+const lang = {
+  en: null,
+  "en-GB": null,
+  es: {
+    week: "Semana",
+    work_week: "Semana de trabajo",
+    day: "Día",
+    month: "Mes",
+    previous: "Atrás",
+    next: "Después",
+    today: "Hoy",
+    agenda: "El Diario",
+
+    showMore: (total: any) => `+${total} más`,
+  },
+};
 
 const events = [
   {
@@ -24,7 +41,15 @@ const events = [
   },
 ];
 
-const mLocalizer = momentLocalizer(moment);
+//const mLocalizer = momentLocalizer(moment);
+const mLocalizer = localizer;
+console.log({ mLocalizer });
+
+const formats: Formats = {
+  dayFormat: (date: any, culture: any, localizer: any) => {
+    return localizer.format(date, "eeeeee d:L", culture).toUpperCase();
+  },
+};
 
 const today = new Date(2023, 5, 22, 0, 0, 0, 0);
 
@@ -35,7 +60,6 @@ interface MyEventProps {
 
 const MyEvent = (props: MyEventProps) => {
   const { event, title } = props;
-  console.log("MyEvent props ", { props });
   return <EventComponent {...props} />;
 };
 
@@ -49,7 +73,6 @@ export const Calendar = (props: any) => {
         // eventContainerWrapper
         eventWrapper: (eventWrapperProps: any) => {
           //return <EventComponent {...eventWrapperProps.event} />;
-          console.log("eventPropGetter", { eventWrapperProps });
           return <div>{eventWrapperProps.children} </div>;
         },
       },
@@ -66,6 +89,7 @@ export const Calendar = (props: any) => {
 
   return (
     <BigCalendar
+      culture={"fi"}
       components={components}
       defaultView={Views.WORK_WEEK}
       defaultDate={defaultDate}
@@ -75,12 +99,12 @@ export const Calendar = (props: any) => {
       views={views}
       showAllEvents={true}
       eventPropGetter={(event, start, end, isSelected) => {
-        console.log("eventPropGetter ", { event });
         return {
           style: {},
           className: "",
         };
       }}
+      formats={formats}
     />
   );
 };
