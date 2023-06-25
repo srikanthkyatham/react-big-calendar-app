@@ -7,7 +7,7 @@ require("globalize/lib/cultures/globalize.culture.fi");
 
 //printFormats();
 
-const cultures = ["fi"];
+/*const cultures = ["fi"];
 const lang = {
   en: null,
   "en-GB": null,
@@ -23,7 +23,7 @@ const lang = {
 
     showMore: (total: any) => `+${total} más`,
   },
-};
+};*/
 
 const events = [
   {
@@ -49,6 +49,9 @@ const formats: Formats = {
   dayFormat: (date: any, culture: any, localizer: any) => {
     return localizer.format(date, "eeeeee d:L", culture).toUpperCase();
   },
+  timeGutterFormat: (date: any, culture: any, localizer: any) => {
+    return localizer.format(date, "H.mm", culture);
+  },
 };
 
 const today = new Date(2023, 5, 22, 0, 0, 0, 0);
@@ -72,18 +75,11 @@ export const Calendar = (props: any) => {
         // eventWrapper
         // eventContainerWrapper
         eventWrapper: (eventWrapperProps: any) => {
-          //return <EventComponent {...eventWrapperProps.event} />;
           return <div>{eventWrapperProps.children} </div>;
         },
       },
       defaultDate: today,
-      views: [
-        Views.AGENDA,
-        Views.DAY,
-        Views.MONTH,
-        Views.WEEK,
-        Views.WORK_WEEK,
-      ],
+      views: [Views.WEEK, Views.WORK_WEEK],
     };
   }, []);
 
