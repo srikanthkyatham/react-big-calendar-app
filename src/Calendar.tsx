@@ -1,29 +1,15 @@
 import { useMemo } from "react";
-import { Calendar as BigCalendar, Formats, Views } from "react-big-calendar";
+import {
+  Calendar as BigCalendar,
+  Formats,
+  NavigateAction,
+  View,
+  Views,
+} from "react-big-calendar";
 import EventComponent from "./EventComponent";
 import "./bigcalendar.css";
 import { localizer } from "./localizer1";
 require("globalize/lib/cultures/globalize.culture.fi");
-
-//printFormats();
-
-/*const cultures = ["fi"];
-const lang = {
-  en: null,
-  "en-GB": null,
-  es: {
-    week: "Semana",
-    work_week: "Semana de trabajo",
-    day: "Día",
-    month: "Mes",
-    previous: "Atrás",
-    next: "Después",
-    today: "Hoy",
-    agenda: "El Diario",
-
-    showMore: (total: any) => `+${total} más`,
-  },
-};*/
 
 const events = [
   {
@@ -41,7 +27,6 @@ const events = [
   },
 ];
 
-//const mLocalizer = momentLocalizer(moment);
 const mLocalizer = localizer;
 console.log({ mLocalizer });
 
@@ -62,7 +47,7 @@ interface MyEventProps {
 }
 
 const MyEvent = (props: MyEventProps) => {
-  const { event, title } = props;
+  //const { event, title } = props;
   return <EventComponent {...props} />;
 };
 
@@ -91,7 +76,7 @@ export const Calendar = (props: any) => {
       defaultDate={defaultDate}
       events={events}
       localizer={mLocalizer}
-      step={30}
+      //step={30}
       views={views}
       showAllEvents={true}
       eventPropGetter={(event, start, end, isSelected) => {
@@ -102,6 +87,9 @@ export const Calendar = (props: any) => {
       }}
       formats={formats}
       toolbar={false}
+      onNavigate={(newDate: Date, view: View, action: NavigateAction) => {
+        console.log("onNavigation action", { newDate, view, action });
+      }}
     />
   );
 };
