@@ -11,6 +11,7 @@
     "@types/react": "^17.0.62",
     "@types/react-big-calendar": "^1.6.4",
     "@types/react-dom": "^17.0.20",
+    "date-fns": "^2.30.0",
     "moment": "^2.29.4",
     "react": "^17.0.2",
     "react-big-calendar": "^1.8.1",
@@ -26,7 +27,6 @@
     "eject": "react-scripts eject",
     "scss2css": "npx sass --watch src/bigcalendar.scss  src/bigcalendar.css -I node_modules",
     "postinstall": "patch-package"
-
   },
   "eslintConfig": {
     "extends": [
