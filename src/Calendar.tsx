@@ -101,6 +101,7 @@ export const Calendar = (props: any) => {
         };
       }}
       formats={formats}
+      toolbar={false}
     />
   );
 };
