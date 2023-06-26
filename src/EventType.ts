@@ -1,0 +1,6 @@
+export enum EventType {
+  AVAILABILITY,
+  EXCEPTION,
+  RESERVATION,
+  OTHER_RESERVATION,
+}
