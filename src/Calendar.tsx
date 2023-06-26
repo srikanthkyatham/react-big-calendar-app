@@ -1,5 +1,3 @@
-import { getHours } from "date-fns";
-import parse from "date-fns/parse";
 import { useMemo } from "react";
 import {
   Calendar as BigCalendar,
@@ -16,15 +14,24 @@ require("globalize/lib/cultures/globalize.culture.fi");
 const events = [
   {
     title: "event1",
-    start: new Date(2023, 5, 22, 20, 0, 0, 0),
-    end: new Date(2023, 5, 22, 23, 0, 0, 0),
+    start: new Date(2023, 5, 26, 20, 0, 0, 0),
+    end: new Date(2023, 5, 26, 21, 0, 0, 0),
     allDay: false,
   },
 
   {
+    title: "event3",
+    start: new Date(2023, 5, 26, 10, 0, 0, 0),
+    end: new Date(2023, 5, 26, 12, 0, 0, 0),
+    allDay: false,
+  },
+];
+
+const backgroundEvents = [
+  {
     title: "event2",
-    start: new Date(2023, 5, 22, 19, 0, 0, 0),
-    end: new Date(2023, 5, 22, 21, 0, 0, 0),
+    start: new Date(2023, 5, 26, 19, 0, 0, 0),
+    end: new Date(2023, 5, 26, 21, 0, 0, 0),
     allDay: false,
   },
 ];
@@ -41,16 +48,7 @@ const formats: Formats = {
   },
 };
 
-const dateString = "Fri Jun 23 2023 18:30:00 GMT+0300";
-const date = parse(dateString, "MM/dd/yyyy", new Date());
-console.log("parsed date", date);
-
-const today = new Date(2023, 5, 22, 0, 0, 0, 0);
-
-const parseDateString = (dateString: string) => {
-  const parsed = Date.parse(dateString);
-  return new Date(parsed);
-};
+const today = new Date(2023, 5, 26, 0, 0, 0, 0);
 
 interface MyEventProps {
   event: any;
@@ -73,15 +71,27 @@ export const Calendar = (props: any) => {
         eventWrapper: (eventWrapperProps: any) => {
           return <div>{eventWrapperProps.children} </div>;
         },
-        timeSlotWrapper: (timeSlotWrapperProps: any) => {
-          // only for the time showing column, the very first column
-          //console.log("timeSlotWrapperProps ", { timeSlotWrapperProps });
-          const date = parseDateString(timeSlotWrapperProps.value);
+        eventInnerWrapper: (eventWrapperProps: any) => {
+          return <>{eventWrapperProps.children} </>;
+        },
+
+        /*timeSlotWrapper: (timeSlotWrapperProps: any) => {
+          const date = timeSlotWrapperProps.value;
           const hours = getHours(date);
           if (hours < 8 || hours > 22) return null;
 
           return <div>{timeSlotWrapperProps.children}</div>;
         },
+        timeSlotContainerWrapper: (timeSlotContainerWrapperProps: any) => {
+          const { group } = timeSlotContainerWrapperProps;
+          const dontRender = group.some((date: Date) => {
+            const currentHour = date.getHours();
+            return currentHour < 8 || currentHour > 22;
+          });
+
+          if (dontRender) return null;
+          return <div>{timeSlotContainerWrapperProps.children}</div>;
+        },*/
       },
       defaultDate: today,
       views: [Views.WEEK, Views.WORK_WEEK],
@@ -89,27 +99,36 @@ export const Calendar = (props: any) => {
   }, []);
 
   return (
-    <BigCalendar
-      culture={"fi"}
-      components={components}
-      defaultView={Views.WORK_WEEK}
-      defaultDate={defaultDate}
-      events={events}
-      localizer={mLocalizer}
-      //step={30}
-      views={views}
-      showAllEvents={true}
-      eventPropGetter={(event, start, end, isSelected) => {
-        return {
-          style: {},
-          className: "",
-        };
+    <div
+      style={{
+        marginLeft: "100px",
+        marginTop: "50px",
+        height: "100vh",
+        width: "50%",
       }}
-      formats={formats}
-      toolbar={false}
-      onNavigate={(newDate: Date, view: View, action: NavigateAction) => {
-        console.log("onNavigation action", { newDate, view, action });
-      }}
-    />
+    >
+      <BigCalendar
+        culture={"fi"}
+        components={components}
+        defaultView={Views.WORK_WEEK}
+        defaultDate={defaultDate}
+        events={events}
+        backgroundEvents={backgroundEvents}
+        localizer={mLocalizer}
+        views={views}
+        showAllEvents={true}
+        eventPropGetter={(event, start, end, isSelected) => {
+          return {
+            style: {},
+            className: "",
+          };
+        }}
+        formats={formats}
+        toolbar={false}
+        onNavigate={(newDate: Date, view: View, action: NavigateAction) => {
+          console.log("onNavigation action", { newDate, view, action });
+        }}
+      />
+    </div>
   );
 };

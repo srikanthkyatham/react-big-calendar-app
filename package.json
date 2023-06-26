@@ -13,9 +13,10 @@
     "@types/react-dom": "^17.0.20",
     "date-fns": "^2.30.0",
     "dayjs": "^1.11.8",
+    "globalize": "^0.1.1",
     "moment": "^2.29.4",
     "react": "^17.0.2",
-    "react-big-calendar": "^1.8.1",
+    "react-big-calendar": "file:../react-big-calendar/react-big-calendar-v1.8.2.tgz",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "typescript": "^4.9.5",
@@ -26,8 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scss2css": "npx sass --watch src/bigcalendar.scss  src/bigcalendar.css -I node_modules",
-    "postinstall": "patch-package"
+    "scss2css": "npx sass --watch src/bigcalendar.scss  src/bigcalendar.css -I node_modules"
   },
   "eslintConfig": {
     "extends": [

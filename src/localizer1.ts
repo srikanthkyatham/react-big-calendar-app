@@ -24,28 +24,37 @@ function fixUnit(unit: any) {
   return datePart;
 }
 
-function startOf(date = null, unit: any) {
-  console.log("startOf", { date, unit });
+function startOf(date: any, unit: any) {
   const datePart = fixUnit(unit);
   if (datePart) {
-    if (datePart === "day") {
-      console.log("datePart day");
-    }
-    return dayjs(date).startOf(datePart).toDate();
+    const realDate = dayjs(date).startOf(datePart).toDate();
+    /*if (datePart === "minutes") {
+      console.log("datePart minutes");
+      if (getHours(realDate) === 0) {
+        debugger;
+        return addHours(realDate, 8);
+      }
+    }*/
+    return realDate;
   }
   return dayjs(date).toDate();
 }
 
-function endOf(date = null, unit: any) {
-  console.log("endOf", { date, unit });
+function endOf(date: any, unit: any) {
   const datePart = fixUnit(unit);
   if (datePart) {
-    return dayjs(date).endOf(datePart).toDate();
+    const realDate = dayjs(date).endOf(datePart).toDate();
+    /*if (datePart === "minutes") {
+      if (getHours(realDate) === 23) {
+        return subHours(realDate, 2);
+      }
+    }*/
+    return realDate;
   }
   return dayjs(date).toDate();
 }
 
-export const localizer = dateFnsLocalizer({
+let localizer = dateFnsLocalizer({
   format,
   parse,
   startOfWeek,
@@ -54,3 +63,8 @@ export const localizer = dateFnsLocalizer({
   startOf,
   endOf,
 });
+
+localizer.startOf = startOf;
+localizer.endOf = endOf;
+
+export { localizer };

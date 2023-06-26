@@ -698,4 +698,32 @@ button.rbc-input::-moz-focus-inner {
   width: 100%;
 }
 
+.rbc-time-view {
+  border: 1px solid rgb(220, 220, 220);
+}
+
+.rbc-time-content {
+  border-top: 1px solid rgb(220, 220, 220);
+}
+
+.rbc-time-content > * + * > * {
+  border-left: 1px solid rgb(220, 220, 220);
+}
+
+.rbc-timeslot-group {
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.rbc-header {
+  border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+.rbc-header + .rbc-header {
+  border-left: 0px;
+}
+
+.rbc-time-gutter .rbc-time-column > .rbc-timeslot-group {
+  border-bottom: 0px;
+}
+
 /*# sourceMappingURL=bigcalendar.css.map */
