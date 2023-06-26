@@ -51,9 +51,6 @@
   border-left:  1px solid rgb(220, 220, 220)
 }
 
-.rbc-timeslot-group {
-  border-bottom:  1px solid rgb(220, 220, 220)
-}
 
 .rbc-header {
   border-bottom:  1px solid rgb(220, 220, 220)
@@ -63,6 +60,19 @@
   border-left:  0px
 }
 
+.rbc-day-slot .rbc-time-column .rbc-now .rbc-today > .rbc-timeslot-group {
+  border-bottom:  1px solid rgb(220, 220, 220)
+}
+
+.rbc-day-slot .rbc-time-column > .rbc-timeslot-group {
+  border-bottom:  1px solid rgb(220, 220, 220)
+}
+
 .rbc-time-gutter .rbc-time-column > .rbc-timeslot-group {
   border-bottom: 0px;
 }
+
+.rbc-time-view .rbc-row {
+  min-height: auto;
+}
+

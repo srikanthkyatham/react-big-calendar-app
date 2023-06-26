@@ -60,6 +60,11 @@ const MyEvent = (props: MyEventProps) => {
   return <EventComponent {...props} />;
 };
 
+const MyCustomHeader = (props: any) => {
+  const { label } = props;
+  return <div>{label}</div>;
+};
+
 export const Calendar = (props: any) => {
   const { components, defaultDate, views } = useMemo(() => {
     return {
@@ -73,6 +78,13 @@ export const Calendar = (props: any) => {
         },
         eventInnerWrapper: (eventWrapperProps: any) => {
           return <>{eventWrapperProps.children} </>;
+        },
+
+        week: {
+          header: MyCustomHeader,
+        },
+        work_week: {
+          header: MyCustomHeader,
         },
 
         /*timeSlotWrapper: (timeSlotWrapperProps: any) => {
