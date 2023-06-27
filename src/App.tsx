@@ -1,8 +1,9 @@
 import "./App.css";
-import { Calendar } from "./Calendar";
+//import { Calendar } from "./Calendar";
+import { make as SubApp } from "./SubApp.gen";
 
 function App() {
-  return <Calendar />;
+  return <SubApp />;
 }
 
 export default App;
