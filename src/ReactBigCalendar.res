@@ -1,6 +1,6 @@
 module Event = {
   module Type = {
-    type t = AVAILABILITY | EXCEPTION | RESERVATION | OTHER_RESERVATION
+    type t = [#AVAILABILITY | #EXCEPTION | #RESERVATION | #OTHER_RESERVATION]
   }
 
   type t = {
@@ -8,9 +8,10 @@ module Event = {
     end: Js.Date.t,
     title: string,
     allDay: bool,
-    _type: Type.t,
+    eventType: Type.t,
   }
 }
 
 @genType.import("./Calendar") @react.component
-external make: (~events: array<Event.t>) => React.element = "Calendar"
+external make: (~events: array<Event.t>, ~backgroundEvents: array<Event.t>) => React.element =
+  "Calendar"

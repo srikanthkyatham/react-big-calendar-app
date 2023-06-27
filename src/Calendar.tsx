@@ -7,7 +7,6 @@ import {
   Views,
 } from "react-big-calendar";
 import EventComponent from "./EventComponent";
-import { EventType } from "./EventType";
 import "./bigcalendar.css";
 import { localizer } from "./localizer1";
 require("globalize/lib/cultures/globalize.culture.fi");
@@ -18,7 +17,7 @@ const events = [
     start: new Date(2023, 5, 26, 20, 0, 0, 0),
     end: new Date(2023, 5, 26, 21, 0, 0, 0),
     allDay: false,
-    type: EventType.AVAILABILITY,
+    type: "AVAILABILITY",
   },
 
   {
@@ -26,7 +25,7 @@ const events = [
     start: new Date(2023, 5, 26, 10, 0, 0, 0),
     end: new Date(2023, 5, 26, 12, 0, 0, 0),
     allDay: false,
-    type: EventType.EXCEPTION,
+    type: "EXCEPTION",
   },
 ];
 
@@ -36,7 +35,7 @@ const backgroundEvents = [
     start: new Date(2023, 5, 26, 19, 0, 0, 0),
     end: new Date(2023, 5, 26, 21, 0, 0, 0),
     allDay: false,
-    type: EventType.RESERVATION,
+    type: "RESERVATION",
   },
 ];
 
@@ -129,8 +128,8 @@ export const Calendar = (props: any) => {
         components={components}
         defaultView={Views.WORK_WEEK}
         defaultDate={defaultDate}
-        events={events}
-        backgroundEvents={backgroundEvents}
+        events={props.events}
+        backgroundEvents={props.backgroundEvents}
         localizer={mLocalizer}
         views={views}
         showAllEvents={true}

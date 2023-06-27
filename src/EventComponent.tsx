@@ -1,5 +1,3 @@
-import { EventType } from "./EventType";
-
 const availabilityColors = {
   rectangle: {
     border: "1px solid rgb(52,157,83)",
@@ -58,22 +56,22 @@ const otherReservationColors = {
 const EventComponent = (props: any) => {
   let colors;
 
-  switch (props.event.type) {
-    case EventType.AVAILABILITY: {
+  switch (props.event.eventType) {
+    case "AVAILABILITY": {
       colors = availabilityColors;
       break;
     }
-    case EventType.EXCEPTION: {
+    case "EXCEPTION": {
       colors = exceptionColors;
       break;
     }
 
-    case EventType.RESERVATION: {
+    case "RESERVATION": {
       colors = reservationColors;
       break;
     }
 
-    case EventType.OTHER_RESERVATION: {
+    case "OTHER_RESERVATION": {
       colors = otherReservationColors;
       break;
     }
