@@ -1,0 +1,32 @@
+{
+  "name": "react-big-calendar-app",
+  "sources": [
+    {
+      "dir": "src", 
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "jsx": {
+    "version": 3
+  },
+  "bs-dependencies": [
+    "@rescript/react"
+  ],
+  "gentypeconfig": {
+    "language": "typescript",
+    "shims": {},
+    "generatedFileExtension": ".gen.tsx",
+    "module": "es6",
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  }  
+}
