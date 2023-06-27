@@ -25,3 +25,4 @@ yarn-error.log*
 # rescript generated files
 *.bs.js
 *.gen.*
+/lib
